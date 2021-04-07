@@ -13,7 +13,7 @@ public class BubbleSortTwoDimensionalArray {
     }
 
 
-    private static void outputTwoDimensionalArray(int[][] array) {
+    static void outputTwoDimensionalArray(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println();
             for (int j = 0; j < array.length; j++) {
@@ -29,7 +29,7 @@ public class BubbleSortTwoDimensionalArray {
         y = a;
     }
 
-    private static int[][] bubbleSort(int[][] array) {
+    static int[][] bubbleSortTwoDimensionalArray(int[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length ; j++) {
                 for (int k = 0; k < array[j].length - 1 ; k++) {

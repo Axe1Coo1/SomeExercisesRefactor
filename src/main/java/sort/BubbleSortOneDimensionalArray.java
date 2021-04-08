@@ -2,7 +2,7 @@ package sort;
 
 public class BubbleSortOneDimensionalArray {
 
-    static int[] generateArray(int arrayLenght) {
+    public static int[] generateArray(int arrayLenght) {
         int[] array;
         array = new int[arrayLenght];
         for (int i = 0; i < array.length; i++) {

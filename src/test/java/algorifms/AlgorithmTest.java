@@ -21,6 +21,5 @@ public class AlgorithmTest {
                 fail("Function 'binarySearch' incorrect");
             }
         }
-
     }
 }

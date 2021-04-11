@@ -1,17 +1,20 @@
 package sort;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static sort.BubbleSortOneDimensionalArray.generateArray;
 import static sort.BubbleSortOneDimensionalArray.bubbleSort;
-import static sort.BubbleSortTwoDimensionalArray.*;
+import static sort.BubbleSortOneDimensionalArray.generateArray;
+import static sort.BubbleSortTwoDimensionalArray.generateTwoDimensionalArray;
 import static sort.MergeSort.generateArrayList;
 import static sort.MergeSort.mergeSort;
+import static sort.StructureTwoDimensionArray.makeStructureArray;
 
 
 public class SortTest {
@@ -66,6 +69,13 @@ public class SortTest {
         ArrayList<Integer> c = generateArrayList(10);
         c = mergeSort(c);
         assertTrue("Function 'mergeSortArraySmall' incorrect", isSorted(c));
+    }
+    @Test
+    public void StructureTest(){
+        for (int i = 2; i <= 20; i += 2) {
+
+            makeStructureArray(i);
+        }
     }
 
     private boolean isSorted(ArrayList<Integer> array) {

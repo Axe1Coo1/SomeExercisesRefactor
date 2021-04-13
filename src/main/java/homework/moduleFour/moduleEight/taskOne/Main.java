@@ -7,9 +7,7 @@ package homework.moduleFour.moduleEight.taskOne;
 // вставьте новую запись в таблицу;
 // удалите таблицу.
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 import static jdbcPractice.Main.getConnection;
 
@@ -20,40 +18,58 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException {
-        createTable();
+
+        String sql = "create table planes\n" +
+                "(\n" +
+                "plane_num int not null primary key,\n" +
+                "year_of_production date not null,\n" +
+                "number_of_passengers int(5),\n" +
+                "weight int(5) );\n";
+
+        String sqlAddRecord = "insert into planes values ('3', '2020-01-01', '300', '14000')";
+
+        String sqlUpdate = "update planes\n" +
+                "set weight = 32000\n" +
+                "where  plane_num = 3;";
+
+        String sqlDropTable = "drop table planes";
+
+
+
+        String select = "select * from taskEight.planes";
+
+        executeSql(sql);
+        executeSql(sqlAddRecord);
+        executeSqlSelect(select);
+//        executeSql(sqlDropTable);
+//        executeSqlSelect(select);
+//        executeSql(sqlUpdate);
+//        executeSqlSelect(select);
 
 
     }
 
-    public static void createTable() throws SQLException {
+
+    public static void executeSql(String sql) throws SQLException {
         Connection connection = null;
         Statement st = null;
         try {
             System.out.println("Creating connection to database...");
-            connection = getConnection();
+            connection = getConnection(URL, USERNAME, PASSWORD);
 
-            System.out.println("Creating table in selected database...");
+            System.out.println("Creating Statement...");
             st = connection.createStatement();
 
-            String sql = "create table planes\n" +
-                    "(\n" +
-                    "plane_num int not null primary key,\n" +
-                    "year_of_production date not null,\n" +
-                    "number_of_passengers int(5),\n" +
-                    "weight int(5) );\n";
-
             st.execute(sql);
-            System.out.println("Table successfully created...");
-
 
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }finally {
-            if(st != null){
+        } finally {
+            if (st != null) {
                 st.close();
             }
-            if(connection != null){
+            if (connection != null) {
                 connection.close();
             }
         }
@@ -61,4 +77,44 @@ public class Main {
 
     }
 
+
+    public static void executeSqlSelect(String sql) throws SQLException {
+        Connection connection = null;
+        Statement st = null;
+        try {
+            System.out.println("Creating connection to database...");
+            connection = getConnection(URL, USERNAME, PASSWORD);
+
+            System.out.println("Creating Statement...");
+            st = connection.createStatement();
+
+            st.execute(sql);
+
+            ResultSet resultSet = st.executeQuery(sql);
+            while (resultSet.next()) {
+                int plane_num = resultSet.getInt("plane_num");
+                Date year_of_production = resultSet.getDate("year_of_production");
+                int number_of_passengers = resultSet.getInt("number_of_passengers");
+                int weight = resultSet.getInt("weight");
+
+                System.out.println("\n================\n");
+                System.out.println("plane_num: " + plane_num);
+                System.out.println("year_of_production: " + year_of_production);
+                System.out.println("number_of_passengers: " + number_of_passengers);
+                System.out.println("weight: " + weight);
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            if (st != null) {
+                st.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+    }
 }

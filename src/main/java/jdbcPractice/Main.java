@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 
 
-        Connection connection = getConnection();
+        Connection connection = getConnection(URL, USERNAME, PASSWORD);
 
         try {
             connection.createStatement().execute("select * from LR3.aeroport_workers");
@@ -63,7 +63,7 @@ public class Main {
 
     }
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection(String URL, String USERNAME, String PASSWORD) throws SQLException {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);

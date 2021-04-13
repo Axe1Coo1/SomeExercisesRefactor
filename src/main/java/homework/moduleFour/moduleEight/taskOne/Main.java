@@ -35,61 +35,38 @@ public class Main {
         String sqlDropTable = "drop table planes";
 
 
-
         String select = "select * from taskEight.planes";
 
-        executeSql(sql);
-        executeSql(sqlAddRecord);
+//        executeSql(sql);
+//        executeSql(sqlAddRecord);
         executeSqlSelect(select);
 //        executeSql(sqlDropTable);
 //        executeSqlSelect(select);
-//        executeSql(sqlUpdate);
-//        executeSqlSelect(select);
+        executeSql(sqlUpdate);
+        executeSqlSelect(select);
 
 
     }
 
 
-    public static void executeSql(String sql) throws SQLException {
-        Connection connection = null;
-        Statement st = null;
-        try {
-            System.out.println("Creating connection to database...");
-            connection = getConnection(URL, USERNAME, PASSWORD);
+    public static Statement executeSql(String sql) throws SQLException {
 
-            System.out.println("Creating Statement...");
-            st = connection.createStatement();
-
+        try (Connection connection = getConnection(URL, USERNAME, PASSWORD);
+             Statement st = connection.createStatement()) {
             st.execute(sql);
-
-
+            return st;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            if (st != null) {
-                st.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
         }
-
-
+        return null;
     }
 
 
     public static void executeSqlSelect(String sql) throws SQLException {
-        Connection connection = null;
-        Statement st = null;
-        try {
-            System.out.println("Creating connection to database...");
-            connection = getConnection(URL, USERNAME, PASSWORD);
 
-            System.out.println("Creating Statement...");
-            st = connection.createStatement();
-
+        try(Connection connection = getConnection(URL, USERNAME, PASSWORD);
+            Statement st = connection.createStatement()) {
             st.execute(sql);
-
             ResultSet resultSet = st.executeQuery(sql);
             while (resultSet.next()) {
                 int plane_num = resultSet.getInt("plane_num");
@@ -107,13 +84,6 @@ public class Main {
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        } finally {
-            if (st != null) {
-                st.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
         }
 
     }

@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 public class BubbleSortTwoDimensionalArray {
     static int[][] generateTwoDimensionalArray(int arrayLength) {

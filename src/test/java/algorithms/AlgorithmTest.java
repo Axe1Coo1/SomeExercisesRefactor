@@ -1,13 +1,13 @@
-package algorifms;
+package algorithms;
 
 import org.junit.Test;
 
 import java.util.List;
 
-import static algorifms.BinarySearchAlgorithm.binarySearch;
+import static algorithms.BinarySearchAlgorithm.binarySearch;
 import static org.junit.Assert.fail;
-import static sort.BubbleSortOneDimensionalArray.generateArray;
-import static sort.BubbleSortOneDimensionalArray.outputArray;
+import static algorithms.sort.BubbleSortOneDimensionalArray.generateArray;
+import static algorithms.sort.BubbleSortOneDimensionalArray.outputArray;
 
 public class AlgorithmTest {
     @Test

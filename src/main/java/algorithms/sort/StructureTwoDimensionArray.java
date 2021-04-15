@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 public class StructureTwoDimensionArray {
     public static void makeStructureArray(int arrayLength) {

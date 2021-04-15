@@ -1,9 +1,13 @@
-package algorifms;
+package algorithms;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class BinarySearchAlgorithm {
+
+    
+
 
     public static List<Integer> binarySearch(int[] array, int item) {
         System.out.println();

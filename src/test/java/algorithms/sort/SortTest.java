@@ -1,4 +1,4 @@
-package sort;
+package algorithms.sort;
 
 import org.junit.Test;
 
@@ -9,12 +9,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static sort.BubbleSortOneDimensionalArray.bubbleSort;
-import static sort.BubbleSortOneDimensionalArray.generateArray;
-import static sort.BubbleSortTwoDimensionalArray.generateTwoDimensionalArray;
-import static sort.MergeSort.generateArrayList;
-import static sort.MergeSort.mergeSort;
-import static sort.StructureTwoDimensionArray.makeStructureArray;
+import static algorithms.sort.BubbleSortOneDimensionalArray.bubbleSort;
+import static algorithms.sort.BubbleSortOneDimensionalArray.generateArray;
+import static algorithms.sort.BubbleSortTwoDimensionalArray.generateTwoDimensionalArray;
+import static algorithms.sort.MergeSort.generateArrayList;
+import static algorithms.sort.MergeSort.mergeSort;
+import static algorithms.sort.StructureTwoDimensionArray.makeStructureArray;
 
 
 public class SortTest {
